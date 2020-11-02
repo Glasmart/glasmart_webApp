@@ -24,7 +24,7 @@ class UserProfile(models.Model):
 
     # Atributos
 
-    id_profile  = models.ManyToOneRel(Profile,on_delete=models.CASCADE)
+    id_profile  = models.ForeignKey(Profile,on_delete=models.CASCADE)
     id_user     = models.OneToOneField(User,on_delete=models.CASCADE)
     active      = models.BooleanField(default=True)
     create_at   = models.DateField(auto_now_add=True)
