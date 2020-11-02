@@ -1,21 +1,25 @@
-"""glasmart URL Configuration
+"""glasmart URL Configuration """
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+# Django imports
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
+# Views
+from django.contrib.auth import views as auth_view
+from login import views as login_views
+
 
 urlpatterns = [
+    # Django views
     path('admin/', admin.site.urls),
-]
+
+    # Login Views
+    path('', login_views.index, name='index'),
+    path('login/', login_views.login_view, name='login'),
+    path('logout/', login_views.logout_view, name='logout'),
+    path('signin/', login_views.signup, name='signup'),
+    path('about/', login_views.about_view, name='about'),
+    path('shop/', login_views.shop_view, name='shop'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
