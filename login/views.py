@@ -70,5 +70,6 @@ def signin(request):
 
 def about_view(request):
     return render(request,'about.html')
+    
 def shop_view(request):
     return render(request,'shop.html')

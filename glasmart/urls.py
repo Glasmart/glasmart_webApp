@@ -9,6 +9,7 @@ from django.conf.urls.static import static
 # Views
 from django.contrib.auth import views as auth_view
 from login import views as login_views
+from dashboard import views as dashboards_views
 
 
 urlpatterns = [
@@ -22,4 +23,9 @@ urlpatterns = [
     path('signin/', login_views.signin, name='signin'),
     path('about/', login_views.about_view, name='about'),
     path('shop/', login_views.shop_view, name='shop'),
+
+    # Dashboard views
+    path('dashboard/home/', dashboards_views.home, name='home'),
+    path('dashboard/turn_card/', dashboards_views.turn_card, name='turn_card'),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
