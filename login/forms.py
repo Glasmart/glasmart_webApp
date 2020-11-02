@@ -3,7 +3,7 @@
 # Django
 from django import forms
 
-class ProfileForm(forms.Form):
+class user(forms.Form):
     ''' Profile Form '''
 
     website = forms.URLField(max_length=200, required=True)

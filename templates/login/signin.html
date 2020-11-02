@@ -1,4 +1,4 @@
-{% extends 'users/base.html' %}
+{% extends 'login/index.html' %}
 
 {% block head_content %}
     <title> Sign Up </title>
@@ -9,7 +9,7 @@
         <p class="alert alert-danger">{{ error }}</p>
     {% endif %}
 
-    <form action="{% url 'signup' %}" method="POST">
+    <form action="{% url 'signin' %}" method="POST">
         {% csrf_token %}
         <div class="form-group">
             <input class="form-control" type="text" placeholder="Username" name="username" required="true" />

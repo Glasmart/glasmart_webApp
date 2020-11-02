@@ -41,7 +41,7 @@ def logout_view(request):
     return redirect('login')
 
 
-def signup(request):
+def signin(request):
     """ Sign up view """
     if request.method == 'POST':
         username = request.POST['username']
@@ -49,12 +49,12 @@ def signup(request):
         password_confirmation = request.POST['passwd_confirmation']
 
         if password != password_confirmation:
-            return render(request, 'login/signup.html', {'error': 'Password do not match'})
+            return render(request, 'login/signin.html', {'error': 'Password do not match'})
 
         try:
             user = User.objects.create_user(username=username, password=password)
         except IntegrityError:
-            return render(request, 'login/signup.html', {'error': 'Username already taken'})
+            return render(request, 'login/signin.html', {'error': 'Username already taken'})
 
         user.first_name = request.POST['first_name']
         user.last_name = request.POST['last_name']
@@ -66,7 +66,7 @@ def signup(request):
 
         return redirect('login')
 
-    return render(request,'login/signup.html')
+    return render(request,'login/signin.html')
 
 def about_view(request):
     return render(request,'about.html')
