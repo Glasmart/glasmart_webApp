@@ -1,2 +1,7 @@
 venv/
 .secrets
+login\migrations
+login/__pycache__/
+glasmart/__pycache__/
+dashboard/migrations/
+dashboard/__pycache__/
