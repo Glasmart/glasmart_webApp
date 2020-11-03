@@ -10,6 +10,7 @@ from django.db.utils import IntegrityError
 
 # Models
 from django.contrib.auth.models import User
+from login.models import UserProfile, Profile
 
 # Forms
 
@@ -21,13 +22,13 @@ def login_view(request):
 
     if request.method == 'POST':
         username = request.POST['username']
-        password = request.POST['password']
+        password = request.POST['passwd']
 
         user = authenticate(request, username=username, password=password)
 
         if user:
             login(request, user)
-            return redirect ('login')
+            return redirect ('/dashboard/home/')
         else:
             return render(request,'login/login.html',{'error':'Invalid username and password'})
 
@@ -38,7 +39,7 @@ def login_view(request):
 def logout_view(request):
     """ Logout a user """
     logout(request)
-    return redirect('login')
+    return redirect('')
 
 
 def signin(request):
@@ -60,10 +61,12 @@ def signin(request):
         user.last_name = request.POST['last_name']
         user.email = request.POST['email']
         user.save()
+        print("****")
+        print(user.id)
+        print("****")
+        defaultProfile = Profile.objects.get(name="Administrador")
 
-        profile = Profile(user=user)
-        profile.save()
-
+        u_p = UserProfile(id_user= user, id_profile=defaultProfile).save()
         return redirect('login')
 
     return render(request,'login/signin.html')

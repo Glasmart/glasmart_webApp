@@ -7,9 +7,9 @@ from login.models import Profile, UserProfile
 class Card(models.Model):
 
     # Atributos
-    name        = models.TextField(null=False)
-    direction   = models.TextField(null=False)
-    id_profile  = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    name        = models.TextField(null=False, default='')
+    iconClass   = models.TextField(null=False, default='')
+    direction   = models.TextField(null=False, default='')
     active      = models.BooleanField(default=True)
     create_at   = models.DateField(auto_now_add=True)
     update_at   = models.DateField(auto_now_add=True)
@@ -26,8 +26,9 @@ class Card(models.Model):
 class UserCard(models.Model):
 
     # Atributos
-    id_user     = models.ForeignKey(User, on_delete=models.CASCADE)
-    id_profile  = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    user        = models.ForeignKey(User, on_delete=models.CASCADE)
+    card        = models.ForeignKey(Card, on_delete=models.CASCADE)
+    profile     = models.ForeignKey(Profile, on_delete=models.CASCADE)
     active      = models.BooleanField(default=True)
     create_at   = models.DateField(auto_now_add=True)
     update_at   = models.DateField(auto_now_add=True)

@@ -31,7 +31,7 @@ class UserProfile(models.Model):
     update_at   = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.name)
+        return str(self.id_profile.name+"-"+self.id_user.username)
 
     def toggleActive(self):
         self.active = not self.active

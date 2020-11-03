@@ -1,11 +1,9 @@
-''' User profile form '''
+''' User  form '''
 
 # Django
 from django import forms
 
-class user(forms.Form):
-    ''' Profile Form '''
+class UserProfileForm(forms.Form):
 
-    website = forms.URLField(max_length=200, required=True)
-    bio = forms.CharField (max_length=500, required=False)
-    picture = forms.ImageField()
+    id_profile  = forms.NumberInput()
+    id_user     = forms.NumberInput()
