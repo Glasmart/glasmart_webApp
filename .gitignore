@@ -1,6 +1,6 @@
 venv/
 .secrets
-login\migrations
+login/migrations/
 login/__pycache__/
 glasmart/__pycache__/
 dashboard/migrations/
