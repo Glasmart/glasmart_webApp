@@ -3,3 +3,6 @@ venv/
 .secrets
 !**/__pycache__/
 !**/migrations/
+
+dashboard/pycache/*.pyc
+db.sqlite3
