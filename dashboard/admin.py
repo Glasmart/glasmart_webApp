@@ -6,8 +6,8 @@ from django.contrib import admin
 
 # Modelos
 from django.contrib.auth.models import User
-from login.models import Profile, UserProfile
-from dashboard.models import Card, UserCard
+from login.models import Profile
+from dashboard.models import Card
 
 @admin.register(Card)
 class CardAdmin(admin.ModelAdmin):
@@ -15,13 +15,13 @@ class CardAdmin(admin.ModelAdmin):
     # Que es lo que quiero que se muestre
     list_display = (
         'name',
-        'direction',
+        'url',
         'iconClass',
     )
     # Que elementos son clickables
     list_display_links = ('name',)
     # Que elementos se pueden editar ahi mismo
-    list_editable = ('iconClass', 'direction')
+    list_editable = ('iconClass', 'url')
     # Como quieres buscar un elemento
     search_fields = ('name', )
     # Filtro de datos
@@ -35,30 +35,8 @@ class CardInline(admin.StackedInline):
     verbose_name_plural = 'cards'
 
 
-@admin.register(UserCard)
-class UserCardAdmin(admin.ModelAdmin):
 
-    # Que es lo que quiero que se muestre
-    list_display = (
-        'id_user',
-        'id_card',
-        'id_profile',
-        'active',
-        'create_at',
-        'update_at',
-    )
-    # Que elementos son clickables
-    list_display_links = ('id_user',)
-    # Que elementos se pueden editar ahi mismo
-    # list_editable = ('birthdate', 'website', 'picture')
-    # Como quieres buscar un elemento
-    search_fields = ('id_user__username', 'id_profile__name', 'created_at', 'update_at')
-    # Filtro de datos
-    # list_filter = ('user__is_active', 'user__is_staff', 'created', 'modified')
 
-class UserCardline(admin.StackedInline):
-    """ Profile in-line admin for users """
 
-    model = UserCard
-    can_delete = False
-    verbose_name_plural = 'usercards'
+
+

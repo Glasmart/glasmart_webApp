@@ -10,7 +10,7 @@ from django.db.utils import IntegrityError
 
 # Models
 from django.contrib.auth.models import User
-from login.models import UserProfile, Profile
+from login.models import Profile
 
 # Forms
 
@@ -61,12 +61,12 @@ def signin(request):
         user.last_name = request.POST['last_name']
         user.email = request.POST['email']
         user.save()
-        print("****")
-        print(user.id)
-        print("****")
-        defaultProfile = Profile.objects.get(name="Administrador")
+        # print("****")
+        # print(user.id)
+        # print("****")
+        # defaultProfile = Profile.objects.get(name="Administrador")
 
-        u_p = UserProfile(id_user= user, id_profile=defaultProfile).save()
+        # u_p = UserProfile(id_user= user, id_profile=defaultProfile).save()
         return redirect('login')
 
     return render(request,'login/signin.html')

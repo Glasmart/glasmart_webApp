@@ -1,39 +1,26 @@
 from django.db import models
 
 from django.contrib.auth.models import User
+from dashboard.models import Card
 
 class Profile(models.Model):
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    cards = models.ManyToManyField(Card)
     # Atributos
-    name        = models.TextField(null=False)
     description = models.TextField(blank=True, null=True)
-    active      = models.BooleanField(default=True)
-    create_at   = models.DateField(auto_now_add=True)
-    update_at   = models.DateField(auto_now_add=True)
+    birthdate = models.TextField(null=True)
+    cellphone = models.TextField(null=True)
+    phone_number = models.TextField(null=True)
+    
+    TYPE_OF_USER = [('admin','admin'),
+                    ('medium','medium'),
+                    ('basic','basic')
+                    ]
+
+    type_user = models.CharField(max_length=255, choices=TYPE_OF_USER, null=True)
 
     def __str__(self):
-        return str(self.name)
 
-    def toggleActive(self):
-        self.active = not self.active
-        self.save()
+        return str(self.user.username)
 
-        return "Cambio Hecho!"
-
-class UserProfile(models.Model):
-
-    # Atributos
-
-    id_profile  = models.ForeignKey(Profile,on_delete=models.CASCADE)
-    id_user     = models.OneToOneField(User,on_delete=models.CASCADE)
-    active      = models.BooleanField(default=True)
-    create_at   = models.DateField(auto_now_add=True)
-    update_at   = models.DateField(auto_now_add=True)
-
-    def __str__(self):
-        return str(self.id_profile.name+"-"+self.id_user.username)
-
-    def toggleActive(self):
-        self.active = not self.active
-        self.save()
-        return "Cambio Hecho!"
