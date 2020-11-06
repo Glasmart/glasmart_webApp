@@ -11,6 +11,7 @@ from django.db.utils import IntegrityError
 # Models
 from django.contrib.auth.models import User
 from login.models import Profile
+from dashboard.models import Card
 
 # Forms
 
@@ -60,7 +61,14 @@ def signin(request):
         user.first_name = request.POST['first_name']
         user.last_name = request.POST['last_name']
         user.email = request.POST['email']
+        Card.objects.all():3
+        card = Card.objects.all():3
         user.save()
+        profile = Profile(user = User, description = "")
+        profile.save()
+        for carta in card:    
+            profile.cards.add(carta)
+            profile.save()
         # print("****")
         # print(user.id)
         # print("****")
