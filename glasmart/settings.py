@@ -25,7 +25,7 @@ SECRET_KEY = 'admin123'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.69','189.237.215.110']
+ALLOWED_HOSTS = ['192.168.1.69','189.237.215.110','localhost']
 
 
 # Application definition
