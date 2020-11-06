@@ -63,17 +63,12 @@ def signin(request):
         user.email = request.POST['email']
         card = Card.objects.all()[:3]
         user.save()
-        profile = Profile(user = user, description = "")
+        profile = Profile(user = user, description = "NewProfile"+user.username)
         profile.save()
         for carta in card:    
             profile.cards.add(carta)
             profile.save()
-        # print("****")
-        # print(user.id)
-        # print("****")
-        # defaultProfile = Profile.objects.get(name="Administrador")
-
-        # u_p = UserProfile(id_user= user, id_profile=defaultProfile).save()
+        
         return redirect('login')
 
     return render(request,'login/signin.html')
