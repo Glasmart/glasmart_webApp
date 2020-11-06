@@ -36,5 +36,4 @@ class UserProfile(models.Model):
     def toggleActive(self):
         self.active = not self.active
         self.save()
-
         return "Cambio Hecho!"

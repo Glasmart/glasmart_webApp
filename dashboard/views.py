@@ -20,6 +20,15 @@ def home(request):
 def turn_card(request):
     card = UserCard.objects.get(id=request.card)
     card.toggleActive()
+    # newline = 'Something new'
+
+    # with open('./config.js','r') as f:
+    # txt = f.read()
+    # newline = "TRUE"
+    # txt = txt.replace('hide: [""]', 'hide: ["' + newline + '"]')
+
+    # with open('./config.js','w') as f:
+    # f.write(txt)
     return render(request,'dashboard/index.html')
 
 @login_required
@@ -28,11 +37,11 @@ def create_first_cards(request):
     UP = UserProfile.objects.get(id = request.POST['profile'])
     if UP.id_profile.name == "Administrador":
         for card in Card.objects.all() :
-            UserCard(id_user=request.user, id_profile=UP.id_profile).save()
+            UserCard(id_user=request.user, id_profile=UP.id_profile, id_card=card).save()
     if UP.id_profile.name == "Basico":
         for card in Card.objects.all()[:2] :
-            UserCard(id_user=request.user, id_profile=UP.id_profile).save()
+            UserCard(id_user=request.user, id_profile=UP.id_profile, id_card=card).save()
     if UP.id_profile.name == "Moderado":
         for card in Card.objects.all()[:4] :
-            UserCard(id_user=request.user, id_profile=UP.id_profile).save()
+            UserCard(id_user=request.user, id_profile=UP.id_profile, id_card=card).save()
     return render(request,'dashboard/index.html')
