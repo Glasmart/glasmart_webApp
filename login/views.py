@@ -61,10 +61,9 @@ def signin(request):
         user.first_name = request.POST['first_name']
         user.last_name = request.POST['last_name']
         user.email = request.POST['email']
-        Card.objects.all():3
-        card = Card.objects.all():3
+        card = Card.objects.all()[:3]
         user.save()
-        profile = Profile(user = User, description = "")
+        profile = Profile(user = user, description = "")
         profile.save()
         for carta in card:    
             profile.cards.add(carta)
