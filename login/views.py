@@ -78,3 +78,6 @@ def about_view(request):
     
 def shop_view(request):
     return render(request,'shop.html')
+
+def restore_password(request):
+    return render(request,'login/password_restore.html')

@@ -23,6 +23,7 @@ urlpatterns = [
     path('signin/', login_views.signin, name='signin'),
     path('about/', login_views.about_view, name='about'),
     path('shop/', login_views.shop_view, name='shop'),
+    path('restore_password/', login_views.restore_password, name='restore'),
 
     # Dashboard views
     path('dashboard/home/', dashboards_views.home, name='home'),
