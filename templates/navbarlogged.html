@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar navbar-expand-lg fixed-top" id="main-navbar">
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top" id="main-navbar">
     <div class="container">
         <a class="navbar-brand pr-5" style="border-right: 1px solid #efefef;" href="{% url 'index' %}">
             <img src="{% static "img/glasmart_logo.png" %}" height="45" class="d-inline-block align-top"/>
@@ -8,7 +8,7 @@
             
             <ul class="navbar-nav my-lg-0 float-right">
                 <li class="nav-item dropdown mega-dropdown">
-                    <a href="{% url 'logout'%}"><i class="fa fa-2x fa-sign-out" aria-hidden="true"></i> Log out </a>
+                    <a href="{% url 'logout'%}" class="text-warning"><i class="fa fa-2x fa-sign-out" aria-hidden="true"></i> Log out </a>
                 </li>
                 
                 

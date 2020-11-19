@@ -1,10 +1,12 @@
 {% extends 'index.html' %}
-
+{% load static %}
 {% block head_content %}    
     <title>About us</title>
 {% endblock head_content %} 
 
 {% block container %}
+<img class="card-img col-lg-6 col-md-8" src="{% static "img/welcome.png" %}" alt="" >
+<div class="container mt-5 pt-5">
     <h1>Acerca de Glasmart</h1>    
 
     <div class="card">
@@ -23,4 +25,5 @@
             </ul>
         </div>
     </div>
+</div>
 {% endblock container %}
