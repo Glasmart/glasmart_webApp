@@ -79,5 +79,18 @@ def about_view(request):
 def shop_view(request):
     return render(request,'shop.html')
 
+def email_sended(request):
+    return render(request,'restore/restore_done.html')
+
 def restore_password(request):
-    return render(request,'login/password_restore.html')
+    if request.method == 'POST':
+        email = request.POST['email']
+        usuario = User.objects.get(email= email)
+        if usuario == undefined:
+            return render(request,'restore/password_restore.html',{error:'El correo no esta registrado'})
+    return render(request,'restore/password_restore.html')
+
+def pasword_reset_done(request):
+    """  Vista de confirmación de envio  """
+    
+    pass

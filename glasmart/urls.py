@@ -23,7 +23,11 @@ urlpatterns = [
     path('signin/', login_views.signin, name='signin'),
     path('about/', login_views.about_view, name='about'),
     path('shop/', login_views.shop_view, name='shop'),
-    path('restore_password/', login_views.restore_password, name='restore'),
+
+    path('reset/restore_password/', login_views.restore_password, name='restore'),
+    path('reset/email_sended/', login_views.email_sended, name='email_sended'),
+    path('reset/pasword_reset_done', login_views.pasword_reset, name='pasword_reset'),
+    path('reset/(?P<uidb64[0-9A-Za-z_\-]+)/(?P<token>.+))')
 
     # Dashboard views
     path('dashboard/home/', dashboards_views.home, name='home'),
