@@ -80,6 +80,14 @@ def shop_view(request):
     return render(request,'shop.html')
 
 def email_sended(request):
+    print("ENTER EMAIL?SENDED")
+    if request.method == 'POST':
+        email = request.POST['email']
+        try:
+            usuario = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return render(request,'restore/password_restore.html',{'error':'El correo no esta registrado'})
+              
     return render(request,'restore/restore_done.html')
 
 def restore_password(request):
@@ -90,6 +98,10 @@ def restore_password(request):
             return render(request,'restore/password_restore.html',{error:'El correo no esta registrado'})
     return render(request,'restore/password_restore.html')
 
+def pasword_reset_confirm(request):
+    """  Vista de confirmación de envio  """
+
+    pass
 def pasword_reset_done(request):
     """  Vista de confirmación de envio  """
     

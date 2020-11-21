@@ -26,8 +26,8 @@ urlpatterns = [
 
     path('reset/restore_password/', login_views.restore_password, name='restore'),
     path('reset/email_sended/', login_views.email_sended, name='email_sended'),
-    path('reset/pasword_reset_done', login_views.pasword_reset, name='pasword_reset'),
-    path('reset/(?P<uidb64[0-9A-Za-z_\-]+)/(?P<token>.+))')
+    path('reset/pasword_reset_done', login_views.pasword_reset_done, name='pasword_reset_done'),
+    path(r"reset/(?P<uidb64>[0-9a-zA-Z_\-]+)/(?<token>.*)/$", login_views.pasword_reset_confirm,name ="pasword_reset_confirm"),
 
     # Dashboard views
     path('dashboard/home/', dashboards_views.home, name='home'),
