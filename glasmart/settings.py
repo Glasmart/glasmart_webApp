@@ -140,6 +140,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'utglasmart@gmail.com'
 EMAIL_HOST_PASSWORD = 'utch123_'
-EMAIL_PORT =587
+EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'GLASMART TEAM <noreply@glasmart.com>'
