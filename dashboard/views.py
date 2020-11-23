@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 # Models
-from login.models import User
+from login.models import User, Products
 from dashboard.models import Card
 # Create your views here.
 
@@ -12,13 +12,18 @@ def home(request):
     _user = User.objects.get(id=request.user.id)
     user_cards= _user.profile.cards.all()
     
-    return render(request,'dashboard/index.html',{'userCards':user_cards})
+    return render(request,'dashboard/dashboard.html',{'userCards':user_cards})
 
 @login_required
 def turn_card(request):
     
     return render(request,'dashboard/index.html')
     
+
+@login_required
+def shop(request):
+    productos = Products.objects.all()
+    return render(request, 'dashboard/shop.html',{'productos':productos})
 
 @login_required
 def create_first_cards(request):

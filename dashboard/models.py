@@ -4,8 +4,8 @@ from django.db import models
 class Card(models.Model):
 
     # Atributos
-    name = models.TextField(null=False, default='')
-    iconClass = models.TextField(null=False, default='')
+    name = models.CharField(max_length=150,unique=True)
+    iconClass = models.CharField(max_length=150)
     url = models.URLField(null=False, default='')
     is_active = models.BooleanField(default=True)
     create_at = models.DateField(auto_now_add=True)

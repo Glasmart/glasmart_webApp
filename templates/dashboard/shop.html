@@ -1,0 +1,111 @@
+{% extends 'dashboard/index.html' %}
+{% load static %}
+{% block head_content %}
+    <title>Shop</title>
+    <script src='https://www.paypal.com/sdk/js?client-id=AaunXvBKecuX0RY-bFsDopIdNJ1Yt5lQHNqtWuZDqHskWGO4YW6-sKj98nzveyebl3akQjtA88l0VCOz&currency=MXN'></script>
+{% endblock head_content %}
+
+{% block container %}
+<div class="card">
+    <h1 class="card-header">Nuestros productos</h1>
+    <div class="card-body">
+
+        <!-- <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="https://image.freepik.com/vector-gratis/dama-narcisista-pie-espejo_74855-5275.jpg"
+                  alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100"
+                  src="https://image.freepik.com/vector-gratis/mujer-feliz-mirandose-espejo_74855-7520.jpg" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100"
+                  src="https://image.freepik.com/vector-gratis/hombre-alta-autoestima-mirando-espejo_23-2148714424.jpg"
+                  alt="Third slide">
+              </div>
+            </div>
+          </div> -->
+          
+          <div class="container mt-5 pt-5">
+            <h1>Nuestros productos</h1>
+            <div class="row">
+              {% for producto in productos %}
+                <div class="card col-lg-4 col-sm-12">
+                  <div class="card-body blockquote">
+                    <h2>{{producto.name}}</h2>
+                    <img src="{% static producto.img_url %}" alt="">
+                    <p class="font-italic mt-3 text-justify">{{producto.description}}</p>
+                    <br>
+                    <div class="card-footer">
+
+                      <p class="alert alert-dark font-weight-bold text-right">Precio: ${{producto.price}}</p>
+                      <button class="btn btn-info"><i class="fa fa-info-circle"></i> Información</button>
+                      <form action="http://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                          <!-- Identify your business so that you can collect the payments. -->
+                          <input type="hidden" name="business" value="RAWSGAZNUR8AA"> <!-- Add your PayPal Seller/Business email address Required-->
+                          <!-- Specify a Buy Now button. -->
+                          <input type="hidden" name="cmd" value="_xclick">
+                          <!-- Specify details about the item that buyers will purchase. -->
+                          <input type="hidden" name="item_name" value="{{producto.name}}" > <!-- Add Description e.g your room type Required-->
+                          <input type="hidden" name="amount" value="{{producto.price}}"> <!-- Dynamically add Total Amount Required-->
+                          <input type="hidden" name="currency_code" value="MXN"> <!-- Update to your currency -->
+                          <input id="invoice" type="hidden" value="" name="invoice"> <!-- Add Unique invoice for each transaction -->
+                          <input type="hidden" name="notify_url" value="www.yourwebsite.com/ipn.php"> <!-- Please add IPN URL You can use this service to automate back-office and administrative functions, including fulfilling orders, tracking customers, and providing status and other information related to transactions. -->
+                          <input type='hidden' name='cancel_return' value='' /> <!-- Take customers to this URL when they cancel their checkout -->
+                          <input type='hidden' name='return' value='' /> <!-- Take customers to this URL when they finish their checkout  -->
+                          <!-- Display the payment button. -->
+                          <!-- <input type="image" name="submit" border="0" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online"> -->
+                          <button class="btn btn-success" type="submit"><i class="fab fa-cc-paypal"></i> Comprar</button>
+                      </form>
+
+                      <!-- Modal -->
+                    </div>
+                  </div>
+                </div>
+                
+              {% endfor %}
+
+            </div>
+          
+            <!-- <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                    <img src="{% static 'img/12x15.png'%}" alt="12x15cm">
+                    <p class="text-justify ">
+                      {% lorem %}
+                    </p>
+                    <a href="{% url 'login' %}" class="btn btn-info">Comprar</a>
+                  </div>
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                    <img src="{% static 'img/16x20.png'%}" alt="12x15cm">
+                    <p class="text-justify ">
+                      {% lorem %}
+                    </p>
+                    <a href="{% url 'login' %}" class="btn btn-info">Comprar</a>
+                  </div>
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                    <img src="{% static 'img/24x24.png'%}" alt="12x15cm">
+                    <p class="text-justify ">
+                      {% lorem %}
+                    </p>
+                    <a href="{% url 'login' %}" class="btn btn-info">Comprar</a>
+                  </div>
+                  <div class="col-lg-3 col-md-4 col-sm-6">
+                    <img src="{% static 'img/35x28.png'%}" alt="12x15cm">
+                    <p class="text-justify ">
+                      {% lorem %}
+                    </p>
+                    <a href="{% url 'login' %}" class="btn btn-info">Comprar</a>
+                  </div>
+          
+                </div>
+              </div>
+            </div>
+          </div> -->
+            
+    </div>
+</div>
+{% endblock container %}

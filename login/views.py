@@ -41,7 +41,7 @@ def login_view(request):
 def logout_view(request):
     """ Logout a user """
     logout(request)
-    return redirect('')
+    return render(request, 'login/login.html')
 
 
 def signin(request):

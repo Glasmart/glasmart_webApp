@@ -28,6 +28,7 @@ urlpatterns = [
     path('dashboard/home/', dashboards_views.home, name='home'),
     path('dashboard/turn_card/', dashboards_views.turn_card, name='turn_card'),
     path('dashboard/first_cards', dashboards_views.create_first_cards, name="first_cards"),
+    path('dashboard/shop', dashboards_views.shop, name="logged_shop"),
 
     # Reset passwords
      path(
