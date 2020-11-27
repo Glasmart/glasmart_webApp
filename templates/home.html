@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block head_content %}    
+    <title>Home</title>
+{% endblock head_content %} 
+
+{% block container %}
+<img class="card-img col-lg-6 col-md-8" src="{% static "img/welcome.png" %}" alt="" >
+<!-- <div class="container mt-5 pt-5">
+    <h1>Acerca de Glasmart</h1>    
+
+    <div class="card">
+        <div class="card-body text-monospace">
+            <p class="text-justify ">
+                Glasmart es un proyecto enfocado a la accesibilidad de la información de manera facil y cómoda para el usuario final, con el objetivo de facilitar su dia a dia con una vista simple y detallada de aquellos aspectos que necesita desde la vista de un espejo convencional.
+            </p>
+            <br>
+            <h2>Funciones</h2>
+            <p></p>
+            <ul class="fa-ul text-justify">
+                <li><span class="fa-li"><i class="fa fa-star"></i></span>Hora y fecha.</li>
+                <li><span class="fa-li"><i class="fa fa-star"></i></span>Meteorología local (5 horas + 5 días de previsión).</li>
+                <li><span class="fa-li"><i class="fa fa-star"></i></span>Calendario de Google</li>
+                <li><span class="fa-li"><i class="fa fa-star"></i></span>Noticias </li>
+            </ul>
+        </div>
+    </div>
+</div> -->
+{% endblock container %}

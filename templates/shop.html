@@ -5,60 +5,60 @@
 {% endblock head_content %}
 
 {% block container %}
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="https://image.freepik.com/vector-gratis/dama-narcisista-pie-espejo_74855-5275.jpg"
-        alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100"
-        src="https://image.freepik.com/vector-gratis/mujer-feliz-mirandose-espejo_74855-7520.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100"
-        src="https://image.freepik.com/vector-gratis/hombre-alta-autoestima-mirando-espejo_23-2148714424.jpg"
-        alt="Third slide">
-    </div>
-  </div>
-</div>
-<div class="container mt-5 pt-5">
-  <h1>Nuestros productos</h1>
-
-  <div class="card">
-    <div class="card-body">
+<div class="card">
+  <h1 class="card-header">Nuestros productos</h1>
+  <div class="card-body">
       <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <img src="{% static 'img/12x15.png'%}" alt="12x15cm">
-          <p class="text-justify ">
-            {% lorem %}
-          </p>
-          <a href="{% url 'login' %}" class="btn btn-info">Comprar</a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <img src="{% static 'img/16x20.png'%}" alt="12x15cm">
-          <p class="text-justify ">
-            {% lorem %}
-          </p>
-          <a href="{% url 'login' %}" class="btn btn-info">Comprar</a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <img src="{% static 'img/24x24.png'%}" alt="12x15cm">
-          <p class="text-justify ">
-            {% lorem %}
-          </p>
-          <a href="{% url 'login' %}" class="btn btn-info">Comprar</a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-          <img src="{% static 'img/35x28.png'%}" alt="12x15cm">
-          <p class="text-justify ">
-            {% lorem %}
-          </p>
-          <a href="{% url 'login' %}" class="btn btn-info">Comprar</a>
-        </div>
+        <div class="col"></div>
+        <div class="col-lg-8 col-sm-12">
+          <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-block w-100" src="https://image.freepik.com/vector-gratis/dama-narcisista-pie-espejo_74855-5275.jpg"
+                    alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100"
+                    src="https://image.freepik.com/vector-gratis/mujer-feliz-mirandose-espejo_74855-7520.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100"
+                    src="https://image.freepik.com/vector-gratis/hombre-alta-autoestima-mirando-espejo_23-2148714424.jpg"
+                    alt="Third slide">
+                </div>
+              </div>
+            </div>
 
+        </div>
+        <div class="col"></div>
       </div>
-    </div>
+        
+        <div class="container mt-5 pt-5">
+          <h1>Nuestros productos</h1>
+          <div class="row">
+            {% for producto in productos %}
+              <div class="card col-lg-4 col-sm-12">
+                <div class="card-body blockquote">
+                  <h2>{{producto.name}}</h2>
+                  <img src="{% static producto.img_url %}" alt="">
+                  <p class="font-italic mt-3 text-justify">{{producto.description}}</p>
+                  <br>
+                  <div class="card-footer">
+
+                    <p class="alert alert-dark font-weight-bold text-right">Precio: ${{producto.price}}</p>
+                    <button class="btn btn-info"><i class="fa fa-info-circle"></i> Información</button>
+                    <a href="{% url 'login' %}" class="btn btn-success"><i class="fab fa-cc-paypal"></i>Comprar</a>
+                        <!-- <buton class="btn btn-success" type="submit"><i class="fab fa-cc-paypal"></i> Comprar</button> -->
+
+                    <!-- Modal -->
+                  </div>
+                </div>
+              </div>
+              
+            {% endfor %}
+
+          </div>
   </div>
 </div>
+
 {% endblock container %}

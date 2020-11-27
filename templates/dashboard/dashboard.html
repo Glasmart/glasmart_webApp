@@ -11,16 +11,16 @@
               <h2 class="card-title">Welcome {{user.first_name}} {{user.last_name}}</h4>
             </div>
             <div class="row mt-3">
-              <h4>Tus modulos disponibles</h4>
+              <h4>Tus modulos disponibles ({{userCards|length}})</h4>
             </div>
-            {% if 5 > 8 %}
+            {% if userCards|length > 0 %}
               <div class="row mt-3">
                 {% for u_card in userCards %}
                 <form action="{% url 'turn_card' %}" method="POST">
                 {% csrf_token %}
                   <div class="col-lg-3 col-md-4 col-sm-6">
-                    <input hidden="true" name="id" value="{{u_card.profile.id}}">
-                    <button type="submit" name="" id="" class="btn {% if u_card.active %}btn-success {% else %} btn-dark{% endif %}">
+                    <input hidden="true" name="id" value="{{u_card.id}}">
+                    <button type="submit" name="" id="" class="btn {% if u_card.is_active %}btn-warning {% else %} btn-outline-warning{% endif %}">
                       <span><i class="fa fa-2x {{u_card.iconClass}}" aria-hidden="true"> </i></span>
                       <h2>{{u_card.name}}</h2>
                     </button>

@@ -10,14 +10,14 @@ from django.db.utils import IntegrityError
 
 # Models
 from django.contrib.auth.models import User
-from login.models import Profile
+from login.models import Profile, Products
 from dashboard.models import Card
 
 # Forms
 from django import forms
 
 def index(request):
-    return render(request,'index.html')
+    return render(request,'home.html')
 
 def login_view(request):
     ''' Login view '''
@@ -83,5 +83,6 @@ def about_view(request):
     return render(request,'about.html')
     
 def shop_view(request):
-    return render(request,'shop.html')
+    productos = Products.objects.all()
+    return render(request,'shop.html',{'productos':productos})
 
