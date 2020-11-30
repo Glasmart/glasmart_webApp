@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['glasmart.herokuapp.com']
 
 SECURE_HSTS_SECONDS = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
@@ -97,23 +97,24 @@ WSGI_APPLICATION = 'glasmart.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
-# if DEBUG:
-DATABASES = {
-    'default':{
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3'
+if DEBUG:
+    DATABASES = {
+        'default':{
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3'
+        }
     }
-}
 
-# else:
-#     import dj_database_url
-#     from decouple import config
+else:
+    import dj_database_url
+    from decouple import config
 
-#     DATABASES = {
-#         'default':dj_database_url.config(
-#             default = config('DATABASE_URL')
-#         )
-#     }
+    DATABASES = {
+        'default':dj_database_url.config(
+            default = config('DATABASE_URL')
+        )
+    }
+
 
 
 # Password validation
