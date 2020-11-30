@@ -2,6 +2,7 @@
 {% load static %}
 {% block head_content %}
     <title>Dashboard</title>
+    
 {% endblock head_content %}
 {% block container %}
     <div class="container pt-5 mt-5">
@@ -13,32 +14,11 @@
             <div class="row mt-3">
               <h4>Tus modulos disponibles ({{userCards|length}})</h4>
             </div>
-            {% if userCards|length > 0 %}
-              <div class="row mt-3">
-                {% for u_card in userCards %}
-                <form action="{% url 'turn_card' %}" method="POST">
-                {% csrf_token %}
-                  <div class="col-lg-3 col-md-4 col-sm-6">
-                    <input hidden="true" name="id" value="{{u_card.id}}">
-                    <button type="submit" name="" id="" class="btn {% if u_card.is_active %}btn-warning {% else %} btn-outline-warning{% endif %}">
-                      <span><i class="fa fa-2x {{u_card.iconClass}}" aria-hidden="true"> </i></span>
-                      <h2>{{u_card.name}}</h2>
-                    </button>
-                  </div>
-                  </form>
-                {% endfor %}
-              </div>
-            {% else %}
-              <div class="row mt-3">
-                <form action="{% url 'first_cards' %}" method="POST">
-                {% csrf_token %}
-                  <input hidden="true" name="profile" value="{{uprofile.id}}">
-                  <button type="submit" name="" id="" class="btn btn-info">
-                        <h2>Crear tus módulos por primera vez</h2>
-                  </button>
-                </form>
-              </div>  
-            {% endif %}
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="http://192.168.254.128:8080/remote.html" allowfullscreen></iframe>
+            </div>
+            
+            <img src='https://chart.googleapis.com/chart?cht=qr&chl=http%3A%2F%2F192.168.254.128%3A8080%2Fremote.html&chs=180x180&choe=UTF-8&chld=L|2' alt='qr code'><a href='https://www.qr-code-generator.com' border='0' style='cursor:default'  rel='nofollow'></a>
           </div>
         </div>
       </div>
