@@ -1,1 +1,1 @@
-web: gunicorn glasmart.wsgi
+web: gunicorn glasmart.wsgi --log-file -
