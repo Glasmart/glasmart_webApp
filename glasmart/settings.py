@@ -10,11 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from pathlib import Path
-import django_heroku
+# import django_heroku
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
+# # Activate Django-Heroku.
+# django_heroku.settings(locals())
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -97,29 +97,23 @@ WSGI_APPLICATION = 'glasmart.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
-if DEBUG:
-    DATABASES = {
-        'default':{
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3'
-        }
+# if DEBUG:
+DATABASES = {
+    'default':{
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
+}
 
-else:
-    import dj_database_url
-    from decouple import config
+# else:
+#     import dj_database_url
+#     from decouple import config
 
-    DATABASES = {
-        'default':dj_database_url.config(
-            default = config('HEROKU_POSTGRESQL_AMBER_URL')
-        )
-    }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#     DATABASES = {
+#         'default':dj_database_url.config(
+#             default = config('DATABASE_URL')
+#         )
 #     }
-# }
 
 
 # Password validation
@@ -155,7 +149,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS =  BASE_DIR / 'static'
+# STATICFILES_DIRS =  BASE_DIR / 'static'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
