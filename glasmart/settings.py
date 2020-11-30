@@ -31,23 +31,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-if DEBUG:
-    DATABASES = {
-        'default':{
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3'
-        }
-    }
-
-else:
-    import dj_database_url
-    from decouple import config
-
-    DATABASES = {
-        'default':dj_database_url.config(
-            default = config('HEROKU_POSTGRESQL_AMBER_URL')
-        )
-    }
 
 ALLOWED_HOSTS = ['*','192.168.1.69','189.237.215.110']
 
@@ -113,12 +96,30 @@ WSGI_APPLICATION = 'glasmart.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+if DEBUG:
+    DATABASES = {
+        'default':{
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3'
+        }
     }
-}
+
+else:
+    import dj_database_url
+    from decouple import config
+
+    DATABASES = {
+        'default':dj_database_url.config(
+            default = config('HEROKU_POSTGRESQL_AMBER_URL')
+        )
+    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
