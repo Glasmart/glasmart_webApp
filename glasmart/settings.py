@@ -15,9 +15,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 # # Activate Django-Heroku.
 # django_heroku.settings(locals())
 from pathlib import Path
+import django_heroku
 import os;
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -68,16 +70,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
-
 ROOT_URLCONF = 'glasmart.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / '/templates',
-        ],
+        'DIRS': [ BASE_DIR / '/templates', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,6 +87,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'glasmart.wsgi.application'
 
@@ -172,3 +171,5 @@ EMAIL_HOST_PASSWORD = 'utch123_'
 EMAIL_PORT = 25
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'GLASMART TEAM <noreply@glasmart.com>'
+
+django_heroku.settings(locals())
