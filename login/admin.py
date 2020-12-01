@@ -39,20 +39,6 @@ class ProductsInline(admin.StackedInline):
     can_delete = False
     verbose_name_plural = 'productos'
 
-# class UserAdmin(BaseUserAdmin):
-#     """ Add profile admin to base user admin """
-
-#     inlines = (ProfileInline,)
-#     list_display = (
-#         'username',
-#         'email',
-#         'first_name',
-#         'last_name',
-#         'is_active',
-#         'is_staff'
-#     )
-#     list_editable=('is_active', 'is_staff')
-
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
 
@@ -76,17 +62,6 @@ class ProfileInline(admin.StackedInline):
     model = Profile
     can_delete = False
     verbose_name_plural = 'profiles'
-
-# class ProfileAdmin(BaseUserAdmin):
-#     """ Add profile admin to base user admin """
-
-#     inlines = (Profile,)
-#     list_display = (
-#         'name',
-#         'description',
-#     )
-#     #list_editable=('is_active', 'is_staff')
-
 
 
 admin.site.unregister(User)
